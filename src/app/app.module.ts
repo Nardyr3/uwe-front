@@ -6,11 +6,20 @@ import { AdministrationStudentComponent } from './components/administration/admi
 import {HttpClientModule} from '@angular/common/http';
 import {NbThemeModule, NbLayoutModule} from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  NbChatModule,
+  NbDatepickerModule,
+  NbDialogModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbToastrModule,
+  NbWindowModule,
+} from '@nebular/theme';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdministrationStudentComponent
+    AdministrationStudentComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +28,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NbThemeModule.forRoot(),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule
+    NbLayoutModule,
+
+
+    BrowserAnimationsModule,
+    NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
+    NbWindowModule.forRoot(),
+    NbToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
