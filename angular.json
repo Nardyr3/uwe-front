@@ -132,5 +132,10 @@
       }
     }
   },
-  "defaultProject": "web-uwe-front"
+  "defaultProject": "web-uwe-front",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
