@@ -1,14 +1,13 @@
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
+<nb-card>
+  <nb-card-header>
+    Smart Table
+  </nb-card-header>
 
-
-  <tr *ngFor="let student of students">
-    <td>{{student.nom}}</td>
-    <td>{{student.prenom}}</td>
-    <td>{{student.mail}}</td>
-  </tr>
-</table>
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source"
+                     (deleteConfirm)="onDeleteConfirm($event)"
+                     (editConfirm)="onSaveConfirm($event)"
+                     (createConfirm)="onCreateConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
