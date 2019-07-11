@@ -32,16 +32,12 @@ export class AdministrationStudentComponent implements OnInit {
         title: 'ID',
         type: 'number',
       },
-      firstName: {
+      prenom: {
         title: 'First Name',
         type: 'string',
       },
-      lastName: {
+      nom: {
         title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
         type: 'string',
       },
       email: {
@@ -70,6 +66,20 @@ export class AdministrationStudentComponent implements OnInit {
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  onSaveConfirm(event) {
+    if (window.confirm('Are you sure you want to save?')) {
+      console.log(event);
+    }
+  }
+
+  onCreateConfirm(event) {
+    if (window.confirm('Are you sure you want to create?')) {
+      console.log(event);
     } else {
       event.confirm.reject();
     }
