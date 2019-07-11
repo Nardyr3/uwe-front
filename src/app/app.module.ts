@@ -4,13 +4,21 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AdministrationStudentComponent } from './components/administration/administration-student/administration-student.component';
 import {HttpClientModule} from '@angular/common/http';
-import {NbThemeModule, NbLayoutModule} from '@nebular/theme';
+import {NbThemeModule, NbLayoutModule, NbCardHeaderComponent, NbCardBodyComponent, NbCardComponent} from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {Ng2SmartTableComponent} from 'ng2-smart-table/ng2-smart-table.component';
+import {Ng2SmartTableTheadComponent} from 'ng2-smart-table/components/thead/thead.component';
+import {Ng2SmartTableTbodyComponent} from 'ng2-smart-table/components/tbody/tbody.component';
+import {Ng2SmartTableModule} from 'ng2-smart-table';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdministrationStudentComponent
+    AdministrationStudentComponent,
+    NbCardHeaderComponent,
+    NbCardBodyComponent,
+    NbCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -19,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NbThemeModule.forRoot(),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule
+    NbLayoutModule,
+    Ng2SmartTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
