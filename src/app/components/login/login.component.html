@@ -1,0 +1,40 @@
+<ng-container>
+  <nb-card>
+    <nb-card-body>
+      <div class="login-form">
+        <form [formGroup]="loginForm">
+          <div class="form-group input">
+            <input type="email" formControlName="email" class="form-control" id="email"
+                   placeholder="Email"
+                   nbInput fullWidth fieldSize="large"
+                   [ngClass]="{ 'is-valid': submitted && !f.email.errors }">
+
+            <div *ngIf="submitted && f.email.errors" class="invalid">
+              <div *ngIf="f.email.errors.required">Email required</div>
+              <div *ngIf="f.email.errors.email">Email incorrect</div>
+            </div>
+
+          </div>
+          <div class="form-group input password-input">
+            <input type="password" formControlName="password" class="form-control"
+                   id="password" placeholder="Password"
+                   nbInput fullWidth fieldSize="large"
+                   [ngClass]="{ 'is-valid': submitted && !f.password.errors }"/>
+            <div *ngIf="submitted && f.password.errors" class="invalid">
+              <div *ngIf="f.password.errors.required">Password required</div>
+            </div>
+          </div>
+
+          <div class="form-group buttons">
+            <button nbButton hero status="primary" type="submit" class="btn btn-primary" (click)="onSubmit()">Submit
+            </button>
+
+            <a class="link password-lost" [routerLink]="['/register']">Password lost ?</a>
+          </div>
+
+        </form>
+      </div>
+    </nb-card-body>
+  </nb-card>
+
+</ng-container>

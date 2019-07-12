@@ -3,16 +3,28 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import {NbThemeModule, NbLayoutModule, NbCardModule} from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbIconModule,
+  NbSelectModule,
+  NbSearchModule,
+  NbUserModule,
+  NbActionsModule, NbMenuModule, NbSidebarModule, NbContextMenuModule, NbActionComponent, NbCardModule, NbInputModule, NbButtonModule
+} from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {AdministrationModule} from './components/administration/administration.module';
 import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +34,23 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
-    AdministrationModule
+    AdministrationModule,
+    NbIconModule,
+    NbSelectModule,
+    NbSearchModule,
+    NbUserModule,
+    NbActionsModule,
+    NbActionsModule,
+    NbLayoutModule,
+    NbMenuModule,
+    NbSearchModule,
+    NbSidebarModule,
+    NbUserModule,
+    NbContextMenuModule,
+    ReactiveFormsModule,
+    NbCardModule,
+    NbInputModule,
+    NbButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
