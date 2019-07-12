@@ -24,7 +24,10 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/@nebular/theme/styles/prebuilt/default.css" // or dark.css
+              "node_modules/@nebular/theme/styles/prebuilt/default.css", // or dark.css
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/nebular-icons/scss/nebular-icons.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
