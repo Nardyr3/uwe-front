@@ -14,14 +14,17 @@ export class AdministrationStudentComponent implements OnInit {
 
   private settings = {
     add: {
-      addButtonContent: '<i class="nb-plus"></i>',
+      addButtonContent: '<i class="fas fa-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate: true,
+      type: 'custom',
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -72,14 +75,14 @@ export class AdministrationStudentComponent implements OnInit {
   }
 
   onSaveConfirm(event) {
-    if (window.confirm('Are you sure you want to save?')) {
-      console.log(event);
-    }
+    console.log(event);
+    event.confirm.resolve();
   }
 
   onCreateConfirm(event) {
     if (window.confirm('Are you sure you want to create?')) {
       console.log(event);
+      event.confirm.resolve();
     } else {
       event.confirm.reject();
     }
