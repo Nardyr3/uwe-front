@@ -51,7 +51,7 @@ export class AdministrationStudentComponent implements OnInit {
         title: 'Age',
         type: 'number',
       },
-    },
+    }
   };
 
   constructor(private studentService: StudentService) {

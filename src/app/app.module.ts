@@ -17,7 +17,7 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSidebarService
+  NbSidebarService, NbTabsetModule, NbListComponent, NbListModule
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -27,6 +27,11 @@ import { RegisterComponent } from './components/register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AdministrationSidebarComponent} from './components/administration/administration-sidebar/administration-sidebar.component';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
+import { HomeComponent } from './components/home/home.component';
+import {MarkChartComponent} from './components/home/mark-chart.component';
+import {NgxEchartsModule} from 'ngx-echarts';
+import {LineChartComponent} from './components/home/line-chart.component';
+import { ModuleComponent } from './components/module/module.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,11 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    AdministrationSidebarComponent
+    AdministrationSidebarComponent,
+    HomeComponent,
+    MarkChartComponent,
+    LineChartComponent,
+    ModuleComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +55,7 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     AdministrationModule,
     NbIconModule,
     NbSelectModule,
+    NbContextMenuModule,
     NbSearchModule,
     NbUserModule,
     NbActionsModule,
@@ -55,12 +65,14 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     NbSearchModule,
     NbSidebarModule,
     NbUserModule,
-    NbContextMenuModule,
     ReactiveFormsModule,
     NbCardModule,
     NbInputModule,
     NbButtonModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NgxEchartsModule,
+    NbTabsetModule,
+    NbListModule,
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

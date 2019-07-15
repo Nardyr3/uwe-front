@@ -5,4 +5,5 @@ export interface Mark {
   id: string;
   student: Student;
   component: Component;
+  value: number;
 }
