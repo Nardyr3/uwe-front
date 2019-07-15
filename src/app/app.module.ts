@@ -17,7 +17,7 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSidebarService
+  NbSidebarService, NbDialogModule
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -60,7 +60,8 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
     NbCardModule,
     NbInputModule,
     NbButtonModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbDialogModule.forRoot(),
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../../../shared/services/student.service';
 import {Student} from '../../../shared/models/student';
+import {ButtonRenderComponent} from './button-render/button-render.component';
 
 @Component({
   selector: 'app-administration-student',
@@ -34,6 +35,7 @@ export class AdministrationStudentComponent implements OnInit {
       id: {
         title: 'ID',
         type: 'number',
+        editable: false,
       },
       prenom: {
         title: 'First Name',
@@ -51,6 +53,12 @@ export class AdministrationStudentComponent implements OnInit {
         title: 'Age',
         type: 'number',
       },
+      grade: {
+        title: 'Add Grade',
+        type: 'custom',
+        renderComponent: ButtonRenderComponent,
+        editable: false,
+      }
     },
   };
 
