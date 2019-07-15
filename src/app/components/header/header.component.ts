@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Subject} from 'rxjs';
+import {NbLayoutScrollService, NbSidebarService} from '@nebular/theme';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  private sidebarState: true;
 
-  constructor() { }
+  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+
+  constructor(private sidebarService: NbSidebarService) {
+  }
 
   ngOnInit() {
   }
 
+  toggleSidebar(): boolean {
+    this.sidebarService.toggle(false, 'main-menu');
+    console.log("test");
+    return false;
+  }
 }
