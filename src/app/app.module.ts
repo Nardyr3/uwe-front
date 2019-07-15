@@ -10,7 +10,14 @@ import {
   NbSelectModule,
   NbSearchModule,
   NbUserModule,
-  NbActionsModule, NbMenuModule, NbSidebarModule, NbContextMenuModule, NbActionComponent, NbCardModule, NbInputModule, NbButtonModule
+  NbActionsModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbContextMenuModule,
+  NbCardModule,
+  NbInputModule,
+  NbButtonModule,
+  NbSidebarService
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -18,6 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AdministrationSidebarComponent} from './components/administration/administration-sidebar/administration-sidebar.component';
+import {NbEvaIconsModule} from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
@@ -25,12 +34,12 @@ import {ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
+    AdministrationSidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NbThemeModule.forRoot(),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
@@ -42,7 +51,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     NbActionsModule,
     NbActionsModule,
     NbLayoutModule,
-    NbMenuModule,
+    NbMenuModule.forRoot(),
     NbSearchModule,
     NbSidebarModule,
     NbUserModule,
@@ -50,9 +59,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
     NbCardModule,
     NbInputModule,
-    NbButtonModule
+    NbButtonModule,
+    NbEvaIconsModule
   ],
-  providers: [],
+  providers: [NbSidebarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

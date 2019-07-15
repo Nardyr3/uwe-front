@@ -4,9 +4,12 @@
     <!-- Insert header here -->
     <app-header></app-header>
   </nb-layout-header>
-
+  <nb-sidebar tag="left">
+    <app-administration-sidebar></app-administration-sidebar>
+  </nb-sidebar>
 
   <nb-layout-column>
+
     <router-outlet></router-outlet>
   </nb-layout-column>
 </nb-layout>
