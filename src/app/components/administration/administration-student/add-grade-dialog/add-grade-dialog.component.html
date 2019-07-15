@@ -1,0 +1,16 @@
+<nb-card>
+    <nb-card-header>{{ title.nom }}</nb-card-header>
+    <nb-card-body>
+        <nb-select placeholder="Form control" >
+            <nb-option value="1">Option 1</nb-option>
+            <nb-option value="2">Option 2</nb-option>
+            <nb-option value="3">Option 3</nb-option>
+            <nb-option value="4">Option 4</nb-option>
+        </nb-select>
+    </nb-card-body>
+    <nb-card-footer>
+        <button nbButton hero status="success" (click)="validate()">Validate</button>
+        <button nbButton hero status="primary" (click)="dismiss()">Cancel</button>
+    </nb-card-footer>
+</nb-card>
+
