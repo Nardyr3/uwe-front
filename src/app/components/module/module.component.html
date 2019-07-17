@@ -1,0 +1,30 @@
+<ng-container>
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="My grades">
+      <nb-card>
+        <nb-card-header>
+          List of my grades for the module {{moduleId}}
+        </nb-card-header>
+        <nb-list>
+          <nb-list-item *ngFor="let mark of marks">
+            {{ mark.id }}
+          </nb-list-item>
+        </nb-list>
+      </nb-card>
+    </nb-tab>
+
+    <nb-tab tabTitle="Charts">
+      <div class="col-lg-6">
+        <nb-card>
+          <nb-card-header>Means</nb-card-header>
+          <nb-card-body>
+            <line-chart></line-chart>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+
+
+
+</ng-container>

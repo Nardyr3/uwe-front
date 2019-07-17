@@ -1,15 +1,15 @@
 <nb-layout>
 
-  <nb-layout-header fixed>
+  <nb-layout-header fixed subheader>
     <!-- Insert header here -->
     <app-header></app-header>
   </nb-layout-header>
-  <nb-sidebar tag="left">
+
+  <nb-sidebar tag="main-menu" *ngIf="appState.isAuth()">
     <app-administration-sidebar></app-administration-sidebar>
   </nb-sidebar>
 
   <nb-layout-column>
-
     <router-outlet></router-outlet>
   </nb-layout-column>
 </nb-layout>

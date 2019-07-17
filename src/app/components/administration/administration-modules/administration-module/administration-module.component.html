@@ -1,0 +1,29 @@
+<ng-container>
+  <div>
+    <a href="/">Home</a> > <a href="/admin/modules">Modules</a> > {{currentModule.name}}
+  </div>
+  <nb-card-body>
+    <nb-card>
+      <nb-card-header>
+        List of components
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="componentsSettings" [source]="componentSource"
+                         (deleteConfirm)="onDeleteComponentConfirm($event)"
+                         (editConfirm)="onSaveConfirm($event)"
+                         (createConfirm)="onCreateConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-header>
+        List of enroled student
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="studentsSettings" [source]="studentSource"
+                         (deleteConfirm)="onDeleteStudentConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</ng-container>

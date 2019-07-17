@@ -1,8 +1,9 @@
 import {Student} from './student';
-import {Component} from './component';
+import {Exam} from './component';
 
 export interface Mark {
   id: string;
   student: Student;
-  component: Component;
+  component: Exam;
+  value: number;
 }

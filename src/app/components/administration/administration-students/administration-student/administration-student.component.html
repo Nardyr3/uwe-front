@@ -1,0 +1,16 @@
+
+<ng-container>
+  <div>
+    <a href="/">Home</a> > <a href="/admin/students">Students</a> > {{currentStudent?.first_name + ' ' + currentStudent?.last_name}}
+  </div>
+  <nb-card-body>
+    <nb-accordion>
+      <nb-accordion-item *ngFor="let module of moduleSubscribed">
+        <nb-accordion-item-header>{{module.name}}</nb-accordion-item-header>
+        <nb-accordion-item-body>
+          Infos sur ce module
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+    </nb-accordion>
+  </nb-card-body>
+</ng-container>

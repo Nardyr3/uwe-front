@@ -1,10 +1,11 @@
 import {Module} from './module';
 import {Mark} from './mark';
 
-export interface Component {
+export interface Exam {
   id: string;
   coefficient: number;
   module: Module;
-  passDate: Date;
+  pass_date: Date;
   marks: Array<Mark>;
+  moduleId?: number;
 }

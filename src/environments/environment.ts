@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  wsUrl: 'http://demo9326140.mockable.io/'
+  wsUrl: 'http://bgirardblanc.ddns.net/'
 };
 
 /*

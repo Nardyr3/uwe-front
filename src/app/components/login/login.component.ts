@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppstateService} from '../../shared/services/appstate.service';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../../shared/services/authentication.service';
+import {AuthenticationService} from '../../shared/services/rest/authentication.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     this.loading = false;
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required]],
       password: ['', Validators.required],
     });
 
@@ -60,15 +61,14 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
 
-    /*this.auth.login('password', this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
+    this.auth.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
       resolve => {
         console.log(resolve);
-        console.log(this.appState.getToken());
-        this.router.navigate(['tabs/evenements']);
+        this.router.navigate(['']);
       },
       (error: HttpErrorResponse) => {
         console.log(error);
-      })*/
+      });
   }
 
 
