@@ -3,6 +3,11 @@ import {NbDialogRef} from '@nebular/theme';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AppstateService} from '../../../../shared/services/appstate.service';
 import { NbPopoverDirective } from '@nebular/theme';
+import {ModuleService} from '../../../../shared/services/rest/module.service';
+import {Router} from '@angular/router';
+import {Module} from '../../../../shared/models/module';
+import {Exam} from '../../../../shared/models/component';
+import {ComponentService} from '../../../../shared/services/rest/component.service';
 
 export function markValidator(control: FormControl) {
   const mark = control.value;
@@ -17,26 +22,8 @@ export function markValidator(control: FormControl) {
 export class AddGradeDialogComponent implements OnInit {
   @Input() title: string;
   @ViewChildren(NbPopoverDirective) popovers: QueryList<NbPopoverDirective>;
-  modules: any[] = [
-    {
-      name: 'Web Development',
-      id: '1',
-    },
-    {
-      name: 'Web Security',
-      id: '2',
-    },
-  ];
-  components: any[] = [
-    {
-      name: 'Exam of 14 July',
-      id: '1',
-    },
-    {
-      name: 'Exam of 23 July',
-      id: '2',
-    },
-  ];
+  private modules: Array<Module>;
+  private components: Array<Exam>;
 
   /**
    * Form soumis ?
@@ -52,14 +39,18 @@ export class AddGradeDialogComponent implements OnInit {
    * Connexion en cours
    */
   public loading: boolean;
-
-  constructor(protected ref: NbDialogRef<AddGradeDialogComponent>, private formBuilder: FormBuilder, protected appState: AppstateService) {
+  constructor(private moduleService: ModuleService, private componentService: ComponentService,
+              protected ref: NbDialogRef<AddGradeDialogComponent>, private formBuilder: FormBuilder, protected appState: AppstateService) {
   }
 
   /**
    * Initialise le formulaire
    */
   public ngOnInit(): void {
+    this.moduleService.getModules().subscribe(res => {
+      console.log(res);
+      this.modules = res;
+    });
     this.loading = false;
     this.loginForm = this.formBuilder.group({
       name: [''],

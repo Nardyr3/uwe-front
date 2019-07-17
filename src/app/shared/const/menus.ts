@@ -7,6 +7,11 @@ export const SidebarMenuItems: NbMenuItem[] = [
     link: '/'
   },
   {
+    title: 'Calendar',
+    icon: 'calendar',
+    link: '/calendar'
+  },
+  {
     title: 'Modules',
     icon: 'home',
     children: [

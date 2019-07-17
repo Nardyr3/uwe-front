@@ -1,0 +1,17 @@
+<nb-card>
+    <div class='app-calendar' *ngIf="calendarVisible">
+        <full-calendar
+            #calendar
+            defaultView="dayGridMonth"
+            [header]="{
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      }"
+            [plugins]="calendarPlugins"
+            [weekends]="calendarWeekends"
+            [events]="calendarEvents"
+            (eventClick)="onClick()"
+        ></full-calendar>
+    </div>
+</nb-card>
