@@ -1,13 +1,18 @@
 <ng-container>
+  <div>
+    <a href="/">Home</a> > {{module?.name}}
+  </div>
   <nb-tabset fullWidth>
     <nb-tab tabTitle="My grades">
       <nb-card>
         <nb-card-header>
-          List of my grades for the module {{moduleId}}
+          List of the assigments
         </nb-card-header>
         <nb-list>
-          <nb-list-item *ngFor="let mark of marks">
-            {{ mark.id }}
+          <nb-list-item *ngFor="let component of module?.components">
+            <p>Name: {{ component.name }}</p>
+            <p>Coefficient: {{component.coefficient}}</p>
+            <p>Pass date: {{component.pass_date | date: 'dd/MM/yyyy'}}</p>
           </nb-list-item>
         </nb-list>
       </nb-card>
@@ -18,13 +23,13 @@
         <nb-card>
           <nb-card-header>Means</nb-card-header>
           <nb-card-body>
-            <line-chart></line-chart>
+
+            <chartjs-line></chartjs-line>
           </nb-card-body>
         </nb-card>
       </div>
     </nb-tab>
   </nb-tabset>
-
 
 
 </ng-container>

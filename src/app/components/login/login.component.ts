@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
       resolve => {
-        console.log(resolve);
         this.router.navigate(['']);
       },
       (error: HttpErrorResponse) => {

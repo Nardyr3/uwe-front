@@ -68,7 +68,6 @@ export class AdministrationStudentsComponent implements OnInit {
   ngOnInit() {
     this.studentService.getStudents().subscribe(resolve => {
       this.source = resolve;
-      console.log(resolve);
     }, error => {
       console.log('Err');
     });
@@ -83,13 +82,11 @@ export class AdministrationStudentsComponent implements OnInit {
   }
 
   onSaveConfirm(event) {
-    console.log(event);
     event.confirm.resolve();
   }
 
   onCreateConfirm(event) {
     if (window.confirm('Are you sure you want to create?')) {
-      console.log(event);
       event.confirm.resolve();
     } else {
       event.confirm.reject();

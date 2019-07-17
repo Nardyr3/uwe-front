@@ -1,14 +1,25 @@
-
 <ng-container>
   <div>
-    <a href="/">Home</a> > <a href="/admin/students">Students</a> > {{currentStudent?.first_name + ' ' + currentStudent?.last_name}}
+    <a href="/">Home</a> > <a href="/admin/students">Students</a> > {{currentStudent?.first_name + ' ' +
+    currentStudent?.last_name}}
   </div>
   <nb-card-body>
+    <div>
+      <nb-select placeholder="Select a module to add" hero fullWidth status="info" [(ngModel)]="selectedModule">
+        <nb-option fullWidth *ngFor="let module of modules" value="{{module.id}}">
+          {{module.name}}
+        </nb-option>
+      </nb-select>
+      <button nbButton hero info (click)="addModuleToStudent()">Add module</button>
+    </div>
+
+
     <nb-accordion>
       <nb-accordion-item *ngFor="let module of moduleSubscribed">
         <nb-accordion-item-header>{{module.name}}</nb-accordion-item-header>
         <nb-accordion-item-body>
-          Infos sur ce module
+          {{module.name}} - {{module.acronym}}
+          <button nbButton hero info (click)="removeStudentFromModule(module.id)">Remove user from this module</button>
         </nb-accordion-item-body>
       </nb-accordion-item>
     </nb-accordion>

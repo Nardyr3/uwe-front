@@ -11,7 +11,7 @@ import {
   NbContextMenuModule,
   NbDatepickerModule,
   NbDialogModule,
-  NbMenuModule, NbSidebarModule
+  NbMenuModule, NbSelectModule, NbSidebarModule
 } from '@nebular/theme';
 import { AdministrationModulesComponent } from './administration-modules/administration-modules.component';
 import { AdministrationStudentComponent } from './administration-students/administration-student/administration-student.component';
@@ -29,12 +29,12 @@ import {CustomStudentButtonComponent} from './administration-students/custom-stu
     AdministrationModuleComponent,
     CustomModuleButtonComponent,
     CustomDatePickerComponent,
-    CustomStudentButtonComponent
+    CustomStudentButtonComponent,
   ],
   entryComponents: [
     CustomModuleButtonComponent,
     CustomDatePickerComponent,
-    CustomStudentButtonComponent
+    CustomStudentButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +47,8 @@ import {CustomStudentButtonComponent} from './administration-students/custom-stu
     FormsModule,
     NbDatepickerModule,
     NbAccordionModule,
-    NbSidebarModule
+    NbSidebarModule,
+    NbSelectModule
   ]
 })
 export class AdministrationModule { }

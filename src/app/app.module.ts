@@ -17,7 +17,15 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSidebarService, NbTabsetModule, NbListComponent, NbListModule, NbDialogModule, NbDialogService, NbDatepickerModule, NbAccordionModule
+  NbSidebarService,
+  NbTabsetModule,
+  NbListComponent,
+  NbListModule,
+  NbDialogModule,
+  NbDialogService,
+  NbDatepickerModule,
+  NbAccordionModule,
+  NbSpinnerModule
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -33,6 +41,8 @@ import {NgxEchartsModule} from 'ngx-echarts';
 import {LineChartComponent} from './components/home/line-chart.component';
 import { ModuleComponent } from './components/module/module.component';
 import { ConfirmationModalComponent } from './components/modals/confirmation-modal/confirmation-modal.component';
+import {ChartjsLineComponent} from './components/home/line-chart-chartjs.component';
+import {ChartModule} from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
@@ -44,6 +54,7 @@ import { ConfirmationModalComponent } from './components/modals/confirmation-mod
     HomeComponent,
     MarkChartComponent,
     LineChartComponent,
+    ChartjsLineComponent,
     ModuleComponent,
     ConfirmationModalComponent
   ],
@@ -80,7 +91,9 @@ import { ConfirmationModalComponent } from './components/modals/confirmation-mod
     NbListModule,
     NbDialogModule.forRoot(),
     NbDatepickerModule.forRoot(),
-    NbAccordionModule
+    NbAccordionModule,
+    NbSpinnerModule,
+    ChartModule
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

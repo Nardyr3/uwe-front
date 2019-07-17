@@ -22,7 +22,6 @@ export class CustomStudentButtonComponent implements ViewCell, OnInit {
   }
 
   onClick() {
-    console.log(this.rowData);
     this.router.navigate(['/admin/student/' + this.rowData.id]);
   }
 }

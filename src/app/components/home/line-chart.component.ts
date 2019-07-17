@@ -16,7 +16,6 @@ export class LineChartComponent implements OnInit, OnDestroy {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
-      console.log(colors);
       this.options = {
         backgroundColor: colors.bg,
         color: [colors.danger, colors.primary, colors.info],
@@ -26,7 +25,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
         },
         legend: {
           left: 'left',
-          data: ['Line 1', 'Line 2', 'Line 3'],
+          data: ['Mark'],
           textStyle: {
             color: colors.fg,
           },
@@ -80,17 +79,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
           {
             name: 'Line 1',
             type: 'line',
-            data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669],
-          },
-          {
-            name: 'Line 2',
-            type: 'line',
-            data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
-          },
-          {
-            name: 'Line 3',
-            type: 'line',
-            data: [1 / 2, 1 / 4, 1 / 8, 1 / 16, 1 / 32, 1 / 64, 1 / 128, 1 / 256, 1 / 512],
+            data: [1, 3, 9, 27, 81, 247, 741, 500, 6669],
           },
         ],
       };

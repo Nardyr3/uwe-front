@@ -21,7 +21,6 @@ export class StudentService extends RestService {
   public getStudents(): Observable<Student[]> {
     return new Observable<Student[]>(observer => {
       this.get<any>('api/students', {}).subscribe(result => {
-        console.log(result);
         observer.next(result as Array<Student>);
         observer.complete();
       }, error => {
@@ -37,7 +36,6 @@ export class StudentService extends RestService {
   public getStudentById(studentId: number): Observable<Student> {
     return new Observable<Student>(observer => {
       this.get<any>('api/students/' + studentId, {}).subscribe(result => {
-        console.log(result);
         observer.next(result as Student);
         observer.complete();
       }, error => {
@@ -66,14 +64,11 @@ export class StudentService extends RestService {
    * Create module
    */
   public deleteStudent(studentId: number): Observable<boolean> {
-    console.log('test');
     return new Observable<boolean>(observer => {
       this.del<any>('api/students/' + studentId, {}).subscribe(result => {
-        console.log(result);
         observer.next(true);
         observer.complete();
       }, error => {
-        console.log(error);
         observer.error(error);
         observer.complete();
       });

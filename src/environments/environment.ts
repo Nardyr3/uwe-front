@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  wsUrl: 'http://bgirardblanc.ddns.net/'
+  wsUrl: 'http://193.70.31.117/', //'http://bgirardblanc.ddns.net/'
 };
 
 /*

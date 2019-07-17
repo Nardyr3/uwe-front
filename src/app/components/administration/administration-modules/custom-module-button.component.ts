@@ -22,7 +22,6 @@ export class CustomModuleButtonComponent implements ViewCell, OnInit {
   }
 
   onClick() {
-    console.log(this.rowData);
     this.router.navigate(['/admin/module/' + this.rowData.id]);
   }
 }

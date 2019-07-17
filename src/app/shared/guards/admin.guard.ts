@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {forkJoin, Observable} from 'rxjs';
-import {AuthenticationService} from '../services/rest/authentication.service';
 import {AppstateService} from '../services/appstate.service';
+import {AuthenticationService} from '../services/rest/authentication.service';
 import {ModuleService} from '../services/rest/module.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(public appState: AppstateService, public auth: AuthenticationService,
               public router: Router, private moduleService: ModuleService) {
@@ -22,11 +22,11 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.appState.isAuth()) {
       if (!this.isReady()) {
-        console.log("LOAD DE LA DATA");
+        console.log('LOAD DE LA DATA');
         this.loadAppData().subscribe();
         return new Observable<boolean>((observer) => {
           this.auth.getCurrentUser().subscribe(resolve => {
-            observer.next(true);
+            observer.next(this.appState.user.roles.includes('ROLE_SUPER_ADMIN'));
             observer.complete();
           }, error => {
             this.router.navigate(['login']);
@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
         });
 
       } else {
-        return true;
+        return this.appState.user.roles.includes('ROLE_SUPER_ADMIN');
       }
     } else {
       this.router.navigate(['login']);
@@ -44,6 +44,7 @@ export class AuthGuard implements CanActivate {
   }
 
   public loadAppData(): Observable<boolean> {
+
     return new Observable<boolean>(observer => {
       const test = forkJoin(
         this.auth.getCurrentUser(),
@@ -62,5 +63,4 @@ export class AuthGuard implements CanActivate {
   public isReady(): boolean {
     return this.appState.modules.length !== 0 && this.appState.token != null && this.appState.token !== '';
   }
-
 }

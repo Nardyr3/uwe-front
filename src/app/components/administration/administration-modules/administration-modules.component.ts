@@ -58,21 +58,17 @@ export class AdministrationModulesComponent implements OnInit {
 
   ngOnInit() {
     this.moduleService.getModules().subscribe(res => {
-      console.log(res);
       this.source = res;
     });
   }
 
   public goToModule(moduleId) {
-    console.log('gotoModule');
     this.router.navigate(['/admin/module/' + moduleId]);
   }
 
   public onDeleteConfirm(event): void {
     const moduleId = event.data.id;
-    console.log(moduleId);
     this.moduleService.deleteModule(moduleId).subscribe(res => {
-      console.log('deleted');
       this.source = this.source.filter(function (obj) {
         return obj.id !== moduleId;
       });
@@ -80,18 +76,14 @@ export class AdministrationModulesComponent implements OnInit {
   }
 
   public onSaveConfirm(event) {
-    console.log(event);
     this.moduleService.editModule(event.newData).subscribe(res => {
-      console.log(res);
       console.log('updated');
     });
     event.confirm.resolve();
   }
 
   public onCreateConfirm(event) {
-    console.log(event);
     this.moduleService.createModule(event.newData).subscribe(res => {
-      console.log(res);
       console.log('created');
     });
     event.confirm.resolve();

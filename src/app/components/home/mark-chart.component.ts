@@ -16,7 +16,6 @@ export class MarkChartComponent implements OnInit, OnDestroy {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
-      console.log(colors);
       this.options = {
         backgroundColor: colors.bg,
         color: [colors.danger, colors.warning],
