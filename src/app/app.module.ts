@@ -17,7 +17,7 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSidebarService, NbTabsetModule, NbListComponent, NbListModule
+  NbSidebarService, NbTabsetModule, NbListComponent, NbListModule, NbDialogModule, NbDialogService, NbDatepickerModule
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -32,6 +32,7 @@ import {MarkChartComponent} from './components/home/mark-chart.component';
 import {NgxEchartsModule} from 'ngx-echarts';
 import {LineChartComponent} from './components/home/line-chart.component';
 import { ModuleComponent } from './components/module/module.component';
+import { ConfirmationModalComponent } from './components/modals/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,11 @@ import { ModuleComponent } from './components/module/module.component';
     HomeComponent,
     MarkChartComponent,
     LineChartComponent,
-    ModuleComponent
+    ModuleComponent,
+    ConfirmationModalComponent
+  ],
+  entryComponents: [
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +78,8 @@ import { ModuleComponent } from './components/module/module.component';
     NgxEchartsModule,
     NbTabsetModule,
     NbListModule,
+    NbDialogModule.forRoot(),
+    NbDatepickerModule.forRoot()
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

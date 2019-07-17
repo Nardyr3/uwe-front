@@ -16,14 +16,6 @@ export class ModuleComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.moduleId = params.params.id;
-      console.log(this.moduleId);
-    });
-
-    this.marks = [
-      {id: 5}
-    ];
   }
 
 }

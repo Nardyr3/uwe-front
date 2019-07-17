@@ -1,0 +1,18 @@
+<ng-container>
+
+
+  <nb-card-body>
+    <nb-card>
+      <nb-card-header>
+        List of modules
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="modulesSettings" [source]="source"
+                         (deleteConfirm)="onDeleteConfirm($event)"
+                         (editConfirm)="onSaveConfirm($event)"
+                         (createConfirm)="onCreateConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</ng-container>

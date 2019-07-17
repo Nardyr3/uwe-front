@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  wsUrl: 'http://demo9326140.mockable.io/'
+  wsUrl: 'http://localhost/uwe-backend/public/index.php/'
 };
 
 /*

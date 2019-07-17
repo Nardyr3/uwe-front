@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {StudentService} from '../../../shared/services/student.service';
+import {StudentService} from '../../../shared/services/rest/student.service';
 import {Student} from '../../../shared/models/student';
 
 @Component({
-  selector: 'app-administration-student',
-  templateUrl: './administration-student.component.html',
-  styleUrls: ['./administration-student.component.scss']
+  selector: 'app-administration-students',
+  templateUrl: './administration-students.component.html',
+  styleUrls: ['./administration-students.component.scss']
 })
-export class AdministrationStudentComponent implements OnInit {
+export class AdministrationStudentsComponent implements OnInit {
 
   private source: Array<Student>;
 
@@ -34,6 +34,8 @@ export class AdministrationStudentComponent implements OnInit {
       id: {
         title: 'ID',
         type: 'number',
+        editable: false,
+        addable: false,
       },
       prenom: {
         title: 'First Name',

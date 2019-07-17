@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
 import {Student} from './student';
+import {Exam} from './component';
 
 export interface Module {
-  id: string;
+  id: number;
   name: string;
   acronym: string;
-  components: Array<Component>;
+  components: Array<Exam>;
   students: Array<Student>;
 }
