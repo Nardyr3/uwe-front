@@ -1,15 +1,46 @@
 <nb-card>
-    <nb-card-header>{{ title.nom }}</nb-card-header>
+    <nb-card-header>Ajouter une note</nb-card-header>
     <nb-card-body>
-        <nb-select placeholder="Form control" >
-            <nb-option value="1">Option 1</nb-option>
-            <nb-option value="2">Option 2</nb-option>
-            <nb-option value="3">Option 3</nb-option>
-            <nb-option value="4">Option 4</nb-option>
-        </nb-select>
+        <div class="login-form">
+            <form [formGroup]="loginForm">
+                <div class="form-group ">
+                   <h6>Name</h6>
+                    <input type="text" class="form-control" id="name" value="{{ title.prenom + ' ' + title.nom }}" disabled nbInput fullWidth fieldSize="large" required>
+
+                </div>
+                <div class="form-group input ">
+                    <h6>Mark</h6>
+                    <input type="number" formControlName="mark" class="form-control"
+                           id="number" placeholder="Mark"
+                           nbPopover="Mark can't be empty" nbPopoverTrigger="noop" (click)="close(0)" nbPopoverPlacement="right"
+                           nbInput fieldSize="large" required
+                           [ngClass]="{ 'is-valid': submitted && !f.mark.errors }" />
+                    <div *ngIf="(f.mark.hasError('invalidMark'))" class="invalid ">
+                        <div *ngIf="(f.mark.hasError('invalidMark')) "><nb-alert outline="danger">
+                            Mark must be between 0 and 100.
+                        </nb-alert></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h6>Module</h6>
+
+                    <nb-select placeholder="Select Module" formControlName="module"
+                               nbPopover="Modules can't be empty" nbPopoverTrigger="noop" (click)="close(1)" nbPopoverPlacement="right">
+                        <nb-option *ngFor="let module of modules" [value]="module.id">{{ module.name }}</nb-option>
+                    </nb-select>
+                </div>
+                <div class="form-group" *ngIf="loginForm.controls.module.value" >
+                    <h6>Component</h6>
+                    <nb-select placeholder="Select Component" formControlName="component"
+                               nbPopover="Component can't be empty" nbPopoverTrigger="noop" (click)="close(2)" nbPopoverPlacement="right">
+                        <nb-option *ngFor="let component of components" [value]="component.id">{{ component.name }}</nb-option>
+                    </nb-select>
+                </div>
+            </form>
+        </div>
     </nb-card-body>
     <nb-card-footer>
-        <button nbButton hero status="success" (click)="validate()">Validate</button>
+        <button nbButton hero status="success" (click)="onSubmit()">Validate</button>
         <button nbButton hero status="primary" (click)="dismiss()">Cancel</button>
     </nb-card-footer>
 </nb-card>

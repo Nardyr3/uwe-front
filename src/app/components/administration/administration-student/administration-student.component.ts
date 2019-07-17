@@ -32,11 +32,6 @@ export class AdministrationStudentComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-        editable: false,
-      },
       prenom: {
         title: 'First Name',
         type: 'string',
@@ -58,6 +53,9 @@ export class AdministrationStudentComponent implements OnInit {
         type: 'custom',
         renderComponent: ButtonRenderComponent,
         editable: false,
+        addable: false,
+        sortable: false,
+        filter: false,
       }
     },
   };
