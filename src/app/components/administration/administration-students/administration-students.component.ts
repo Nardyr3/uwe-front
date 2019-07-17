@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../../../shared/services/rest/student.service';
 import {Student} from '../../../shared/models/student';
+import {CustomStudentButtonComponent} from './custom-student-button.component';
 
 @Component({
   selector: 'app-administration-students',
@@ -37,11 +38,11 @@ export class AdministrationStudentsComponent implements OnInit {
         editable: false,
         addable: false,
       },
-      prenom: {
+      first_name: {
         title: 'First Name',
         type: 'string',
       },
-      nom: {
+      last_name: {
         title: 'Last Name',
         type: 'string',
       },
@@ -49,9 +50,14 @@ export class AdministrationStudentsComponent implements OnInit {
         title: 'E-mail',
         type: 'string',
       },
-      age: {
-        title: 'Age',
-        type: 'number',
+      customAction: {
+        title: 'Voir le module',
+        type: 'custom',
+        renderComponent: CustomStudentButtonComponent,
+        addable : false,
+        editable : false,
+        filter: false,
+        sortable: false,
       },
     }
   };

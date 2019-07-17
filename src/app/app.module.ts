@@ -17,7 +17,7 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSidebarService, NbTabsetModule, NbListComponent, NbListModule, NbDialogModule, NbDialogService, NbDatepickerModule
+  NbSidebarService, NbTabsetModule, NbListComponent, NbListModule, NbDialogModule, NbDialogService, NbDatepickerModule, NbAccordionModule
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -79,7 +79,8 @@ import { ConfirmationModalComponent } from './components/modals/confirmation-mod
     NbTabsetModule,
     NbListModule,
     NbDialogModule.forRoot(),
-    NbDatepickerModule.forRoot()
+    NbDatepickerModule.forRoot(),
+    NbAccordionModule
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

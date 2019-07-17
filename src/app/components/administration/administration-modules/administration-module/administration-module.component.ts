@@ -39,12 +39,6 @@ export class AdministrationModuleComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-        editale: false,
-        addable: false,
-      },
       name: {
         title: 'Name',
         type: 'string'
@@ -71,10 +65,6 @@ export class AdministrationModuleComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
       first_name: {
         title: 'Firstname',
         type: 'string',
@@ -119,7 +109,14 @@ export class AdministrationModuleComponent implements OnInit {
   }
 
   public onDeleteComponentConfirm(event): void {
-    console.log(event);
+    const componentId = event.data.id;
+    console.log(componentId);
+    this.componentService.deleteComponent(componentId).subscribe(res => {
+      console.log('deleted');
+      this.componentSource = this.componentSource.filter((obj) => {
+        return obj.id !== componentId;
+      });
+    });
   }
 
   public onSaveConfirm(event) {

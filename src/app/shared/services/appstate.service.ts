@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Module} from '../models/module';
 import {Student} from '../models/student';
+import {ModuleService} from './rest/module.service';
 
 @Injectable({
   providedIn: 'root'
@@ -149,5 +150,18 @@ export class AppstateService {
     this._user.next(value);
   }
 
+  /**
+   * Récupération du token courant
+   */
+  public get modules(): Array<Module> {
+    return this._modules.getValue();
+  }
+
+  /**
+   * Affectation du token courant
+   */
+  public set modules(value: Array<Module>) {
+    this._modules.next(value);
+  }
 
 }

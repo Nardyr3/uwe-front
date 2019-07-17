@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  wsUrl: 'http://localhost/uwe-backend/public/index.php/'
+  wsUrl: 'http://bgirardblanc.ddns.net/'
 };
 
 /*

@@ -33,12 +33,6 @@ export class AdministrationModulesComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-        editable: false,
-        width: '10%',
-      },
       name: {
         title: 'Name',
         type: 'string',

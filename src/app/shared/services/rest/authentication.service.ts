@@ -3,13 +3,16 @@ import {RestService} from './rest.service';
 import {HttpClient} from '@angular/common/http';
 import {AppstateService} from '../appstate.service';
 import {Observable} from 'rxjs';
+import {Exam} from '../../models/component';
+import {Student} from '../../models/student';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService extends RestService {
 
-  constructor(protected http: HttpClient, protected appState: AppstateService) {
+  constructor(protected http: HttpClient, protected appState: AppstateService, private router: Router) {
     super(http, appState);
   }
 
@@ -82,5 +85,28 @@ export class AuthenticationService extends RestService {
         observer.complete();
       });
     });
+  }
+
+  /**
+   * Get all components
+   */
+  public getCurrentUser(): Observable<Student> {
+    return new Observable<Student>(observer => {
+      this.get<any>('api/auth/user', {}).subscribe(result => {
+        console.log(result);
+        this.appState.user = result;
+        observer.next(result as Student);
+        observer.complete();
+      }, error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
+  public disconnect(): boolean {
+    this.appState.token = '';
+    this.router.navigate(['login']);
+    return true;
   }
 }

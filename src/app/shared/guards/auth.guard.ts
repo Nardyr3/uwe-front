@@ -3,6 +3,9 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTre
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../services/rest/authentication.service';
 import {AppstateService} from '../services/appstate.service';
+import {Module} from '../models/module';
+import {Student} from '../models/student';
+import {ModuleService} from '../services/rest/module.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,7 @@ import {AppstateService} from '../services/appstate.service';
 export class AuthGuard implements CanActivate {
 
   constructor(public appState: AppstateService, public auth: AuthenticationService,
-              public router: Router) {
+              public router: Router, private moduleService: ModuleService) {
   }
 
   /**
@@ -21,35 +24,43 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log(this.appState);
     if (this.appState.isAuth()) {
-
-      // Charge les données utilisateurs si elles ne sont pas présentes
-      /*if (!this.security.isReady()) {
-        console.log('NOT READY');
-        return Promise.all([this.auth.getUserInfos().toPromise(), this.loadAppData()]).then(
-          resolve => {
-            if (resolve.length === 2 && resolve[1]) {
-              this.appState.user = resolve[0] as User;
-              return true;
-            }
-            console.log('RESOLVE PAS OK');
-            this.router.navigate([AppRoutes.ERROR]);
-            this.appState.token = null;
+      if (!this.appState.user) {
+        return new Observable<boolean>((observer) => {
+          this.auth.getCurrentUser().subscribe(resolve => {
+            console.log(resolve);
+            observer.next(true);
+            observer.complete();
+          }, error => {
+            this.router.navigate(['login']);
             return false;
-          }, () => {
-            console.log('REJECTED');
-            this.router.navigate([AppRoutes.ERROR]);
-            this.appState.token = null;
-            return false;
-          }
-        );
-      }*/
+          });
+        });
 
-      return true;
+      } else {
+        return true;
+      }
     } else {
       this.router.navigate(['login']);
-
       return false;
     }
+  }
+
+  public loadAppData(): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      this.moduleService.getModules().subscribe(resolve => {
+        this.appState.modules = resolve as Array<Module>;
+        if (this.appState.modules) {
+          observer.next(true);
+          observer.complete();
+        } else {
+          observer.next(false);
+          observer.complete();
+        }
+      }, error => {
+        observer.next(false);
+        observer.complete();
+      });
+    });
   }
 
 }
