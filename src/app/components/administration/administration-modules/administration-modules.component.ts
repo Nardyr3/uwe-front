@@ -85,9 +85,16 @@ export class AdministrationModulesComponent implements OnInit {
   public onCreateConfirm(event) {
     this.moduleService.createModule(event.newData).subscribe(res => {
       console.log('created');
+      this.refreshData();
     });
     event.confirm.resolve();
     // event.confirm.reject();
+  }
+
+  public refreshData() {
+    this.moduleService.getModules().subscribe(res => {
+      this.source = res;
+    });
   }
 
 }
