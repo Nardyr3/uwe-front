@@ -40,6 +40,8 @@ import {CustomComponentButtonComponent} from './administration-modules/administr
     CustomDatePickerComponent,
     CustomStudentButtonComponent,
     CustomComponentButtonComponent
+    ButtonRenderComponent,
+    AddGradeDialogComponent,
   ],
   imports: [
     CommonModule,
