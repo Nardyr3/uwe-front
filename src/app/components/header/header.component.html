@@ -1,12 +1,15 @@
-<div class="header-container">
-  <div class="logo-container">
-    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
-      <nb-icon icon="menu-2-outline"></nb-icon>
-    </a>
-    <a class="logo" routerLink="/">Home</a>
+<div class="header-container logo-content">
+    <div class="logo-container">
+      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+      <a nbButton size="small" outline status="primary" class="logo" routerLink="/">Home</a>
+    </div>
+  <div class="user">
+    <a nbButton size="small" outline status="primary" class="nbbutton" routerLink="/student">My Profile</a>
+    <button nbButton size="small" outline status="primary" class="nbbutton" (click)="disconnect()">Disconnect</button>
   </div>
 </div>
 
-<div class="header-container">
-  <p (click)="disconnect()">Disconnect</p>
-</div>
+
+

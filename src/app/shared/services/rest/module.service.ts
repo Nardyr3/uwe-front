@@ -30,6 +30,36 @@ export class ModuleService extends RestService {
   }
 
   /**
+   * Récupération d'une moyenne en fonction de son module
+   */
+  public getMeanByModules(): Observable<any> {
+    return new Observable<Module[]>(observer => {
+      this.get<any>('api/modules/mean', {}).subscribe(result => {
+        observer.next(result);
+        observer.complete();
+      }, error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
+  /**
+   * Récupération d'une moyenne en fonction de son module
+   */
+  public getMeanByModulesAndStudent(moduleId: number, studentId: number): Observable<any> {
+    return new Observable<Module[]>(observer => {
+      this.get<any>('api/modules/' + moduleId + '/students/' + studentId + '/mean', {}).subscribe(result => {
+        observer.next(result);
+        observer.complete();
+      }, error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
+  /**
    * Récupération d'un module par son id
    */
   public getModuleById(moduleId: number): Observable<Module> {
@@ -112,6 +142,5 @@ export class ModuleService extends RestService {
       });
     });
   }
-  
 
 }

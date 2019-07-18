@@ -53,6 +53,11 @@ export class AdministrationSidebarComponent implements OnInit {
               icon: 'home',
               children: children
             },
+            {
+              title: 'Calendar',
+              icon: 'calendar',
+              link: '/calendar'
+            },
           ];
         });
       }

@@ -47,15 +47,10 @@ import {CustomComponentButtonComponent} from './administration-modules/administr
     CustomComponentButtonComponent
   ],
   entryComponents: [
-    CustomModuleButtonComponent,
-    CustomDatePickerComponent,
-    CustomStudentButtonComponent,
-    CustomComponentButtonComponent
-  ],
-  entryComponents: [
     ButtonRenderComponent,
     AddGradeDialogComponent ,
     CustomModuleButtonComponent,
+    CustomComponentButtonComponent,
     CustomDatePickerComponent,
     CustomStudentButtonComponent
   ],

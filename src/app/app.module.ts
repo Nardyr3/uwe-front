@@ -45,6 +45,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {ChartjsLineComponent} from './components/home/line-chart-chartjs.component';
 import {ChartModule} from 'angular2-chartjs';
+import { StudentInfoComponent } from './components/student-info/student-info.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import {ChartModule} from 'angular2-chartjs';
     ChartjsLineComponent,
     ModuleComponent,
     ConfirmationModalComponent,
-    CalendarComponent
+    CalendarComponent,
+    StudentInfoComponent
   ],
   entryComponents: [
     ConfirmationModalComponent

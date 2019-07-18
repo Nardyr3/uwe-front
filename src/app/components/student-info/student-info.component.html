@@ -1,0 +1,21 @@
+<nb-card>
+    <nb-card-header>
+        My Information
+    </nb-card-header>
+    <nb-list>
+        <nb-list-item >
+            <div class="form-group ">
+                <h6>Full Name</h6>
+                <input type="text" value="{{student.first_name + ' ' + student.last_name}}" disabled nbInput fullWidth fieldSize="large" required>
+            </div>
+            <div class="form-group ">
+                <h6>Email</h6>
+                <input type="text" value="{{student.email}}" disabled nbInput fullWidth fieldSize="large" required>
+            </div>
+            <div class="form-group ">
+                <h6>Address</h6>
+                <input type="text" value="{{student.address}}" disabled nbInput fullWidth fieldSize="large" required>
+            </div>
+        </nb-list-item>
+    </nb-list>
+</nb-card>
