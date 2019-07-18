@@ -14,7 +14,7 @@ import {NbDialogService} from '@nebular/theme';
 export class AdministrationComponentComponent implements OnInit {
 
   private currentComponent: Exam;
-
+  private mean: number;
   private markSource: Array<Mark>;
 
   private markSettings = {
@@ -57,6 +57,12 @@ export class AdministrationComponentComponent implements OnInit {
       this.currentComponent = resolve;
       console.log(this.currentComponent);
       this.markSource = this.currentComponent.marks;
+
+      let markTotal: number = 0;
+      this.currentComponent.marks.forEach(mark => {
+        markTotal += mark.value;
+      });
+      this.mean = markTotal / this.currentComponent.marks.length;
     });
   }
 
