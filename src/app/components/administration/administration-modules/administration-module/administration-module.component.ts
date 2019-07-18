@@ -112,6 +112,16 @@ export class AdministrationModuleComponent implements OnInit {
           ' from the module ' + this.currentModule.name + ' ?',
       }
     }).onClose.subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.moduleService.removeStudent(this.currentModule.id, event.data.id).subscribe(result => {
+          event.confirm.resolve();
+        }, err => {
+          event.confirm.reject();
+        });
+      } else {
+        event.confirm.reject();
+      }
     });
 
   }
@@ -131,7 +141,7 @@ export class AdministrationModuleComponent implements OnInit {
 
   public onCreateConfirm(event) {
     let newComponent = event.newData as Exam;
-    newComponent.moduleId = this.currentModule.id;
+    newComponent.module_id = this.currentModule.id;
     this.componentService.createComponent(newComponent).subscribe(res => {
     });
     event.confirm.resolve();

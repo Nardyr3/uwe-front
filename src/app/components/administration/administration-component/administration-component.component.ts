@@ -58,11 +58,11 @@ export class AdministrationComponentComponent implements OnInit {
       console.log(this.currentComponent);
       this.markSource = this.currentComponent.marks;
 
-      let markTotal: number = 0;
+      let markTotal = 0;
       this.currentComponent.marks.forEach(mark => {
         markTotal += mark.value;
       });
-      this.mean = markTotal / this.currentComponent.marks.length;
+      this.mean = Math.round(markTotal / this.currentComponent.marks.length);
     });
   }
 

@@ -8,6 +8,6 @@ export interface Exam {
   module: Module;
   pass_date: Date;
   marks: Array<Mark>;
-  moduleId?: number;
+  module_id?: number;
   studentMark?: Mark;
 }

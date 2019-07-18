@@ -38,12 +38,12 @@ export class ModuleComponent implements OnInit {
         this.module = resolve;
       });
 
-      let tempChartData = [];
-      let tempChartLabel = [];
+      const tempChartData = [];
+      const tempChartLabel = [];
       this.studentService.getMarkByStudent(this.appState.user.id).subscribe(res => {
         res.forEach(mark => {
           if (Number(mark.component.module.id) === this.moduleId) {
-            var comp = this.module.components.filter((item) => {
+            const comp = this.module.components.filter((item) => {
               return item.id === mark.component.id;
             });
             if (comp.length) {

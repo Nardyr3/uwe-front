@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-custom-module-button',
   template: `
-    <button nbButton fullWidth status="info" (click)="onClick()">Voir le module</button>`,
+    <button nbButton fullWidth status="info" (click)="onClick()">View the module</button>`,
 })
 export class CustomModuleButtonComponent implements ViewCell, OnInit {
   renderValue: string;

@@ -42,7 +42,7 @@ export class AdministrationModulesComponent implements OnInit {
         type: 'string',
       },
       customAction: {
-        title: 'Voir le module',
+        title: 'View the module',
         type: 'custom',
         renderComponent: CustomModuleButtonComponent,
         addable: false,
