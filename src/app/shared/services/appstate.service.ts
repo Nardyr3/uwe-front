@@ -21,6 +21,11 @@ export class AppstateService {
   protected _modules: BehaviorSubject<Module[]> = new BehaviorSubject<Module[]>([]);
 
   /**
+   * Liste des modules
+   */
+  protected _studentModules: BehaviorSubject<Module[]> = new BehaviorSubject<Module[]>([]);
+
+  /**
    * User id
    */
   protected _userId: BehaviorSubject<number> = new BehaviorSubject<number>(null);
@@ -143,6 +148,10 @@ export class AppstateService {
     return this._user.getValue();
   }
 
+  public get userObservable(): any {
+    return this._user;
+  }
+
   /**
    * Affectation du token courant
    */
@@ -163,5 +172,24 @@ export class AppstateService {
   public set modules(value: Array<Module>) {
     this._modules.next(value);
   }
+
+  /**
+   * Récupération du token courant
+   */
+  public get studentModules(): Array<Module> {
+    return this._studentModules.getValue();
+  }
+
+  public get studentModuleObservable(): any {
+    return this._studentModules;
+  }
+
+  /**
+   * Affectation du token courant
+   */
+  public set studentModules(value: Array<Module>) {
+    this._studentModules.next(value);
+  }
+
 
 }

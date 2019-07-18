@@ -13,7 +13,6 @@ export class ConfirmationModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.confirmText);
   }
 
   public closeConfirm() {

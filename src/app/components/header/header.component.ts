@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Subject} from 'rxjs';
 import {NbLayoutScrollService, NbSidebarService} from '@nebular/theme';
 import {AuthenticationService} from '../../shared/services/rest/authentication.service';
 
@@ -21,7 +20,6 @@ export class HeaderComponent implements OnInit {
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'main-menu');
-    console.log("test");
     return false;
   }
 

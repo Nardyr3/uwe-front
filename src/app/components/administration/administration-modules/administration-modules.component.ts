@@ -45,8 +45,8 @@ export class AdministrationModulesComponent implements OnInit {
         title: 'Voir le module',
         type: 'custom',
         renderComponent: CustomModuleButtonComponent,
-        addable : false,
-        editable : false,
+        addable: false,
+        editable: false,
         filter: false,
         sortable: false,
       },
@@ -58,44 +58,43 @@ export class AdministrationModulesComponent implements OnInit {
 
   ngOnInit() {
     this.moduleService.getModules().subscribe(res => {
-      console.log(res);
       this.source = res;
     });
   }
 
   public goToModule(moduleId) {
-    console.log('gotoModule');
     this.router.navigate(['/admin/module/' + moduleId]);
   }
 
   public onDeleteConfirm(event): void {
     const moduleId = event.data.id;
-    console.log(moduleId);
     this.moduleService.deleteModule(moduleId).subscribe(res => {
-      console.log('deleted');
-      this.source = this.source.filter(function (obj) {
+      this.source = this.source.filter((obj) => {
         return obj.id !== moduleId;
       });
     });
   }
 
   public onSaveConfirm(event) {
-    console.log(event);
     this.moduleService.editModule(event.newData).subscribe(res => {
-      console.log(res);
       console.log('updated');
     });
     event.confirm.resolve();
   }
 
   public onCreateConfirm(event) {
-    console.log(event);
     this.moduleService.createModule(event.newData).subscribe(res => {
-      console.log(res);
       console.log('created');
+      this.refreshData();
     });
     event.confirm.resolve();
     // event.confirm.reject();
+  }
+
+  public refreshData() {
+    this.moduleService.getModules().subscribe(res => {
+      this.source = res;
+    });
   }
 
 }

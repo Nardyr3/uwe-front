@@ -17,7 +17,15 @@ import {
   NbCardModule,
   NbInputModule,
   NbButtonModule,
-  NbSidebarService, NbTabsetModule, NbListModule, NbDialogModule, NbDatepickerModule, NbAccordionModule
+  NbSidebarService,
+  NbTabsetModule,
+  NbListComponent,
+  NbListModule,
+  NbDialogModule,
+  NbDialogService,
+  NbDatepickerModule,
+  NbAccordionModule,
+  NbSpinnerModule
 } from '@nebular/theme';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AdministrationModule} from './components/administration/administration.module';
@@ -35,6 +43,8 @@ import { ModuleComponent } from './components/module/module.component';
 import { ConfirmationModalComponent } from './components/modals/confirmation-modal/confirmation-modal.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import {ChartjsLineComponent} from './components/home/line-chart-chartjs.component';
+import {ChartModule} from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
@@ -46,6 +56,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     HomeComponent,
     MarkChartComponent,
     LineChartComponent,
+    ChartjsLineComponent,
     ModuleComponent,
     ConfirmationModalComponent,
     CalendarComponent
@@ -60,6 +71,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
+    AdministrationModule,
     NbIconModule,
     NbSelectModule,
     NbContextMenuModule,
@@ -86,8 +98,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     NbDialogModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbAccordionModule,
+    NbSpinnerModule,
+    ChartModule,
     FullCalendarModule,
-    AdministrationModule,
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

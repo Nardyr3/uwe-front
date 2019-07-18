@@ -1,0 +1,12 @@
+::ng-deep {
+  ul.options-list {
+    max-width: 100% !important;
+  }
+
+  .add-module {
+    padding-bottom: 20px;
+    div {
+      display: inline-block;
+    }
+  }
+}

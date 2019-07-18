@@ -29,6 +29,8 @@ import { ButtonRenderComponent } from './administration-students/button-render/b
 import { AddGradeDialogComponent } from './administration-students/add-grade-dialog/add-grade-dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
+import { AdministrationComponentComponent } from './administration-component/administration-component.component';
+import {CustomComponentButtonComponent} from './administration-modules/administration-module/custom-component-button.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,21 @@ import {ReactiveFormsModule} from '@angular/forms';
     AdministrationModuleComponent,
     CustomModuleButtonComponent,
     CustomDatePickerComponent,
+    CustomStudentButtonComponent,
+    AdministrationComponentComponent,
+    CustomComponentButtonComponent
+  ],
+  entryComponents: [
+    CustomModuleButtonComponent,
+    CustomDatePickerComponent,
+    CustomStudentButtonComponent,
+    CustomComponentButtonComponent
+  ],
+  entryComponents: [
+    ButtonRenderComponent,
+    AddGradeDialogComponent ,
+    CustomModuleButtonComponent,
+    CustomDatePickerComponent,
     CustomStudentButtonComponent
   ],
   imports: [
@@ -49,6 +66,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     NbCardModule,
     NbMenuModule,
     NbIconModule,
+    NbContextMenuModule,
     NbButtonModule,
     NbDialogModule.forChild(),
     NbSelectModule,
@@ -57,13 +75,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     NbPopoverModule,
     NbAlertModule,
     FormsModule,
-    NbAccordionModule,
     NbDatepickerModule,
-  ],
-  entryComponents: [ButtonRenderComponent, AddGradeDialogComponent ,
-    CustomModuleButtonComponent,
-    CustomDatePickerComponent,
-    CustomStudentButtonComponent
+    NbAccordionModule,
+    NbSidebarModule
   ]
 })
 export class AdministrationModule { }

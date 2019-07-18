@@ -3,11 +3,11 @@ import {ViewCell} from 'ng2-smart-table';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-custom-module-button',
+  selector: 'app-custom-component-button',
   template: `
-    <button nbButton fullWidth status="info" (click)="onClick()">Voir le module</button>`,
+    <button nbButton fullWidth status="info" (click)="onClick()">View component</button>`,
 })
-export class CustomModuleButtonComponent implements ViewCell, OnInit {
+export class CustomComponentButtonComponent implements ViewCell, OnInit {
   renderValue: string;
 
   @Input() value;
@@ -22,6 +22,6 @@ export class CustomModuleButtonComponent implements ViewCell, OnInit {
   }
 
   onClick() {
-    this.router.navigate(['/admin/module/' + this.rowData.id]);
+    this.router.navigate(['/admin/component/' + this.rowData.id]);
   }
 }

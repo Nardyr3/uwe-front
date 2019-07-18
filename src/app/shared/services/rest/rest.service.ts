@@ -25,7 +25,6 @@ export class RestService {
       'Content-Type': 'application/json'
     });
 
-    console.log(this.appState.token);
     if (this.appState.token) {
       headers = headers.set('Authorization', 'Bearer ' + this.appState.token);
     }
@@ -100,8 +99,6 @@ export class RestService {
    * Appel DELETE
    */
   protected del<T>(path: string, params: any): Observable<T> {
-    console.log("testt");
-    console.log((path.indexOf('data') === 0 ? '' : this.webservicesUrl) + path);
     return this.http.delete<T>((path.indexOf('data') === 0 ? '' : this.webservicesUrl) + path, {
       headers: this.headers,
       responseType: 'json',
@@ -122,7 +119,6 @@ export class RestService {
       console.log(`${operation} failed: ${error.message}`);
       const obs: Observable<T> = new Observable<T>(observer => {
         observer.error(error);
-        console.log(error);
         observer.next(error);
       });
       // Let the app keep running by returning an empty or null result (to be defined by method call).

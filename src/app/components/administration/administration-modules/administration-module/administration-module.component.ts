@@ -8,6 +8,8 @@ import {ConfirmationModalComponent} from '../../../modals/confirmation-modal/con
 import {CustomDatePickerComponent} from '../custom-datepicker.component';
 import {ComponentService} from '../../../../shared/services/rest/component.service';
 import {Exam} from '../../../../shared/models/component';
+import {CustomModuleButtonComponent} from '../custom-module-button.component';
+import {CustomComponentButtonComponent} from './custom-component-button.component';
 
 @Component({
   selector: 'app-administration-module',
@@ -52,6 +54,15 @@ export class AdministrationModuleComponent implements OnInit {
         type: 'html',
         editor: {type: 'custom', component: CustomDatePickerComponent}
       },
+      customAction: {
+        title: 'View exam',
+        type: 'custom',
+        renderComponent: CustomComponentButtonComponent,
+        addable: false,
+        editable: false,
+        filter: false,
+        sortable: false,
+      },
     }
   };
 
@@ -87,7 +98,6 @@ export class AdministrationModuleComponent implements OnInit {
   ngOnInit() {
     const moduleId = this.route.snapshot.paramMap.get('id');
     this.moduleService.getModuleById(Number(moduleId)).subscribe(resolve => {
-      console.log(resolve);
       this.currentModule = resolve;
       this.componentSource = resolve.components;
       this.studentSource = resolve.students;
@@ -95,7 +105,6 @@ export class AdministrationModuleComponent implements OnInit {
   }
 
   public onDeleteStudentConfirm(event): void {
-    console.log(event);
     const closeOnBackdropClick = false;
     this.dialogService.open(ConfirmationModalComponent, {
       closeOnBackdropClick, context: {
@@ -103,16 +112,13 @@ export class AdministrationModuleComponent implements OnInit {
           ' from the module ' + this.currentModule.name + ' ?',
       }
     }).onClose.subscribe(res => {
-      console.log(res);
     });
 
   }
 
   public onDeleteComponentConfirm(event): void {
     const componentId = event.data.id;
-    console.log(componentId);
     this.componentService.deleteComponent(componentId).subscribe(res => {
-      console.log('deleted');
       this.componentSource = this.componentSource.filter((obj) => {
         return obj.id !== componentId;
       });
@@ -120,17 +126,13 @@ export class AdministrationModuleComponent implements OnInit {
   }
 
   public onSaveConfirm(event) {
-    console.log(event);
     event.confirm.resolve();
   }
 
   public onCreateConfirm(event) {
-    console.log(event);
     let newComponent = event.newData as Exam;
     newComponent.moduleId = this.currentModule.id;
     this.componentService.createComponent(newComponent).subscribe(res => {
-      console.log(res);
-      console.log('created');
     });
     event.confirm.resolve();
   }
