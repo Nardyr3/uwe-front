@@ -127,12 +127,30 @@ export class AdministrationModuleComponent implements OnInit {
   }
 
   public onDeleteComponentConfirm(event): void {
-    const componentId = event.data.id;
-    this.componentService.deleteComponent(componentId).subscribe(res => {
-      this.componentSource = this.componentSource.filter((obj) => {
-        return obj.id !== componentId;
-      });
+    const closeOnBackdropClick = false;
+    this.dialogService.open(ConfirmationModalComponent, {
+      closeOnBackdropClick, context: {
+        confirmText: 'Do you really want to delete the student ' + event.data.first_name + ' ' + event.data.last_name +
+          ' from the module ' + this.currentModule.name + ' ?',
+      }
+    }).onClose.subscribe(res => {
+      console.log(res);
+      if (res) {
+
+        const componentId = event.data.id;
+        this.componentService.deleteComponent(componentId).subscribe(res => {
+          this.componentSource = this.componentSource.filter((obj) => {
+            return obj.id !== componentId;
+          });
+          event.confirm.resolve();
+        }, error => {
+          event.confirm.reject();
+        });
+      } else {
+        event.confirm.reject();
+      }
     });
+
   }
 
   public onSaveConfirm(event) {

@@ -3,6 +3,8 @@ import {Module} from '../../../shared/models/module';
 import {ModuleService} from '../../../shared/services/rest/module.service';
 import {Router} from '@angular/router';
 import {CustomModuleButtonComponent} from './custom-module-button.component';
+import {ConfirmationModalComponent} from '../../modals/confirmation-modal/confirmation-modal.component';
+import {NbDialogService} from '@nebular/theme';
 
 @Component({
   selector: 'app-administration-module',
@@ -53,7 +55,7 @@ export class AdministrationModulesComponent implements OnInit {
     }
   };
 
-  constructor(private moduleService: ModuleService, private router: Router) {
+  constructor(private moduleService: ModuleService, private router: Router, private dialogService: NbDialogService) {
   }
 
   ngOnInit() {
@@ -67,11 +69,25 @@ export class AdministrationModulesComponent implements OnInit {
   }
 
   public onDeleteConfirm(event): void {
-    const moduleId = event.data.id;
-    this.moduleService.deleteModule(moduleId).subscribe(res => {
-      this.source = this.source.filter((obj) => {
-        return obj.id !== moduleId;
-      });
+    const closeOnBackdropClick = false;
+    this.dialogService.open(ConfirmationModalComponent, {
+      closeOnBackdropClick, context: {
+        confirmText: 'Do you really want to delete the student ' + event.data.first_name + ' ' + event.data.last_name + '?',
+      }
+    }).onClose.subscribe(res => {
+      if (res) {
+        const moduleId = event.data.id;
+        this.moduleService.deleteModule(moduleId).subscribe(res => {
+          this.source = this.source.filter((obj) => {
+            return obj.id !== moduleId;
+          });
+          event.confirm.resolve();
+        }, error => {
+          event.confirm.reject();
+        });
+      } else {
+        event.confirm.reject();
+      }
     });
   }
 
