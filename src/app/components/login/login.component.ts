@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   /**
    * Connexion en cours
    */
-  public loading: boolean;
+  public loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router,
               protected appState: AppstateService) {
@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
    * Initialise le formulaire
    */
   public ngOnInit(): void {
-    this.loading = false;
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', Validators.required],
@@ -64,6 +63,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
       resolve => {
         this.router.navigate(['']);
+        this.loading = false;
       },
       (error: HttpErrorResponse) => {
         console.log(error);

@@ -45,8 +45,8 @@ export class AdministrationModulesComponent implements OnInit {
         title: 'Voir le module',
         type: 'custom',
         renderComponent: CustomModuleButtonComponent,
-        addable : false,
-        editable : false,
+        addable: false,
+        editable: false,
         filter: false,
         sortable: false,
       },
@@ -69,7 +69,7 @@ export class AdministrationModulesComponent implements OnInit {
   public onDeleteConfirm(event): void {
     const moduleId = event.data.id;
     this.moduleService.deleteModule(moduleId).subscribe(res => {
-      this.source = this.source.filter(function (obj) {
+      this.source = this.source.filter((obj) => {
         return obj.id !== moduleId;
       });
     });

@@ -20,6 +20,8 @@ import {CustomModuleButtonComponent} from './administration-modules/custom-modul
 import {CustomDatePickerComponent} from './administration-modules/custom-datepicker.component';
 import {FormsModule} from '@angular/forms';
 import {CustomStudentButtonComponent} from './administration-students/custom-student-button.component';
+import { AdministrationComponentComponent } from './administration-component/administration-component.component';
+import {CustomComponentButtonComponent} from './administration-modules/administration-module/custom-component-button.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,14 @@ import {CustomStudentButtonComponent} from './administration-students/custom-stu
     CustomModuleButtonComponent,
     CustomDatePickerComponent,
     CustomStudentButtonComponent,
+    AdministrationComponentComponent,
+    CustomComponentButtonComponent
   ],
   entryComponents: [
     CustomModuleButtonComponent,
     CustomDatePickerComponent,
     CustomStudentButtonComponent,
+    CustomComponentButtonComponent
   ],
   imports: [
     CommonModule,

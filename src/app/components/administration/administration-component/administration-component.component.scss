@@ -1,0 +1,9 @@
+::ng-deep {
+
+  span {
+    &.link {
+      cursor: pointer;
+      color: #9381FF;
+    }
+  }
+}

@@ -1,5 +1,8 @@
 <ng-container>
-  <nb-card>
+  <nb-card accent="info" size="xsmall" [nbSpinner]="loading"
+           nbSpinnerStatus="danger"
+           nbSpinnerSize="large"
+           nbSpinnerMessage="">
     <nb-card-body>
       <div class="login-form">
         <form [formGroup]="loginForm">

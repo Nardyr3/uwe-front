@@ -1,7 +1,15 @@
 <ng-container>
-  <div>
-    <a href="/">Home</a> > {{module?.name}}
+  <div class="site-nav-wrap">
+    <nav class="nav">
+      <div class="single-breadcrumb-wrap">
+        <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a href="/">Home</a></span>
+      </div>
+      <div class="single-breadcrumb-wrap">
+        <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb">{{module?.name}}</span>
+      </div>
+    </nav>
   </div>
+
   <nb-tabset fullWidth>
     <nb-tab tabTitle="My grades">
       <nb-card>

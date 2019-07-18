@@ -41,6 +41,7 @@ export class AdministrationStudentComponent implements OnInit {
 
   public refreshStudent() {
     this.modules = this.appState.modules;
+    this.selectedModule = null;
     this.studentService.getStudentById(this.currentStudent.id).subscribe(resolve => {
       this.currentStudent = resolve;
       this.moduleSubscribed = this.currentStudent.modules;

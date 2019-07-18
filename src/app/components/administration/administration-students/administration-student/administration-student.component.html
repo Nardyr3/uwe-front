@@ -1,16 +1,36 @@
 <ng-container>
-  <div>
-    <a href="/">Home</a> > <a href="/admin/students">Students</a> > {{currentStudent?.first_name + ' ' +
-    currentStudent?.last_name}}
-  </div>
+  <nb-card>
+    <nb-card-body>
+      <div class="breadcrumb-wrapper">
+        <div class="site-nav-wrap">
+          <nav class="nav">
+            <div class="single-breadcrumb-wrap">
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a routerLink="/">Home</a></span>
+            </div>
+            <div class="single-breadcrumb-wrap">
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a routerLink="/admin/students">Students</a></span>
+            </div>
+            <div class="single-breadcrumb-wrap">
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a>{{currentStudent?.first_name + ' ' +
+    currentStudent?.last_name}}</a></span>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
   <nb-card-body>
-    <div>
-      <nb-select placeholder="Select a module to add" hero fullWidth status="info" [(ngModel)]="selectedModule">
-        <nb-option fullWidth *ngFor="let module of modules" value="{{module.id}}">
-          {{module.name}}
-        </nb-option>
-      </nb-select>
-      <button nbButton hero info (click)="addModuleToStudent()">Add module</button>
+    <div class="add-module">
+      <div class="col-md-8">
+        <nb-select placeholder="Select a module to add" hero fullWidth status="info" [(ngModel)]="selectedModule" class="pull-left">
+          <nb-option class="full-width" *ngFor="let module of modules" value="{{module.id}}">
+            {{module.name}}
+          </nb-option>
+        </nb-select>
+      </div>
+      <div class="col-md-4">
+        <button nbButton hero info (click)="addModuleToStudent()" class="pull-right">Add module</button>
+      </div>
     </div>
 
 

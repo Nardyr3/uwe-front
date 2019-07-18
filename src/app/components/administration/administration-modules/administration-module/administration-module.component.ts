@@ -8,6 +8,8 @@ import {ConfirmationModalComponent} from '../../../modals/confirmation-modal/con
 import {CustomDatePickerComponent} from '../custom-datepicker.component';
 import {ComponentService} from '../../../../shared/services/rest/component.service';
 import {Exam} from '../../../../shared/models/component';
+import {CustomModuleButtonComponent} from '../custom-module-button.component';
+import {CustomComponentButtonComponent} from './custom-component-button.component';
 
 @Component({
   selector: 'app-administration-module',
@@ -51,6 +53,15 @@ export class AdministrationModuleComponent implements OnInit {
         title: 'PassDate',
         type: 'html',
         editor: {type: 'custom', component: CustomDatePickerComponent}
+      },
+      customAction: {
+        title: 'View exam',
+        type: 'custom',
+        renderComponent: CustomComponentButtonComponent,
+        addable: false,
+        editable: false,
+        filter: false,
+        sortable: false,
       },
     }
   };

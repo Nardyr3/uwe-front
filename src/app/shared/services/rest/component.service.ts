@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {RestService} from './rest.service';
 import {HttpClient} from '@angular/common/http';
 import {AppstateService} from '../appstate.service';
@@ -82,6 +82,18 @@ export class ComponentService extends RestService {
     return new Observable<boolean>(observer => {
       this.put<any>('api/components/' + component.id, {}, component).subscribe(result => {
         observer.next(true);
+        observer.complete();
+      }, error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
+  public getMarksByComponent(componentId: number): Observable<Exam> {
+    return new Observable<Exam>(observer => {
+      this.get<any>('api/components/' + componentId + '/marks/students', {}).subscribe(result => {
+        observer.next(result as Exam);
         observer.complete();
       }, error => {
         observer.error(error);

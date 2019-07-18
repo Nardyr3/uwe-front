@@ -8,21 +8,29 @@
               <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a routerLink="/">Home</a></span>
             </div>
             <div class="single-breadcrumb-wrap">
-              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a
-              routerLink="/admin/modules">Modules</a></span>
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a routerLink="/admin/modules">Modules</a></span>
             </div>
             <div class="single-breadcrumb-wrap">
-              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a>{{currentModule.name}}</a></span>
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a routerLink="/admin/module/{{currentComponent?.module.id}}">{{currentComponent?.module.name}}</a></span>
+            </div>
+            <div class="single-breadcrumb-wrap">
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a>{{currentComponent?.name}}</a></span>
             </div>
           </nav>
         </div>
       </div>
     </nb-card-body>
   </nb-card>
+
+  <div>
+    <h4> Assignment <span>{{currentComponent?.name}}</span> from module
+      <span class="link" routerLink="/admin/module/{{currentComponent?.module.id}}">{{currentComponent?.module.name}}</span></h4>
+
+  </div>
   <nb-card-body>
     <nb-card>
       <nb-card-header>
-        List of components
+        List of marks
       </nb-card-header>
       <nb-card-body>
         <ng2-smart-table [settings]="componentsSettings" [source]="componentSource"
@@ -34,11 +42,11 @@
     </nb-card>
     <nb-card>
       <nb-card-header>
-        List of enroled student
+        List of marks
       </nb-card-header>
       <nb-card-body>
-        <ng2-smart-table [settings]="studentsSettings" [source]="studentSource"
-                         (deleteConfirm)="onDeleteStudentConfirm($event)">
+        <ng2-smart-table [settings]="markSettings" [source]="markSource"
+                         (deleteConfirm)="onDeleteMarkConfirm($event)">
         </ng2-smart-table>
       </nb-card-body>
     </nb-card>

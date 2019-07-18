@@ -24,7 +24,7 @@ export class AdministrationSidebarComponent implements OnInit {
         },
           {
             title: 'Students',
-            icon: 'layout-outline',
+            icon: 'people-outline',
             link: '/admin/students'
           },
           {
