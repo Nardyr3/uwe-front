@@ -1,5 +1,6 @@
 import {Student} from './student';
 import {Exam} from './component';
+import {Mark} from './mark';
 
 export interface Module {
   id: number;
@@ -7,4 +8,5 @@ export interface Module {
   acronym: string;
   components: Array<Exam>;
   students: Array<Student>;
+
 }

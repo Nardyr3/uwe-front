@@ -1,38 +1,48 @@
 <ng-container>
-  <div class="site-nav-wrap">
-    <nav class="nav">
-      <div class="single-breadcrumb-wrap">
-        <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a href="/">Home</a></span>
+  <nb-card>
+    <nb-card-body>
+      <div class="breadcrumb-wrapper">
+        <div class="site-nav-wrap">
+          <nav class="nav">
+            <div class="single-breadcrumb-wrap">
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb"><a
+              href="/">Home</a></span>
+            </div>
+            <div class="single-breadcrumb-wrap">
+              <span class="sep"><i class="fas fa-chevron-right"></i></span> <span
+              class="breadcrumb">{{module?.name}}</span>
+            </div>
+          </nav>
+        </div>
       </div>
-      <div class="single-breadcrumb-wrap">
-        <span class="sep"><i class="fas fa-chevron-right"></i></span> <span class="breadcrumb">{{module?.name}}</span>
-      </div>
-    </nav>
-  </div>
-
+    </nb-card-body>
+  </nb-card>
   <nb-tabset fullWidth>
     <nb-tab tabTitle="My grades">
       <nb-card>
         <nb-card-header>
           List of the assigments
+          <h6 *ngIf="mean">Current mean: {{mean}}</h6>
         </nb-card-header>
         <nb-list>
           <nb-list-item *ngFor="let component of module?.components">
             <p>Name: {{ component.name }}</p>
             <p>Coefficient: {{component.coefficient}}</p>
             <p>Pass date: {{component.pass_date | date: 'dd/MM/yyyy'}}</p>
+            <p *ngIf="component.studentMark">My mark: {{component.studentMark.value}}</p>
+            <p *ngIf="!component.studentMark">No mark for this assigment</p>
+
           </nb-list-item>
         </nb-list>
       </nb-card>
     </nb-tab>
 
     <nb-tab tabTitle="Charts">
-      <div class="col-lg-6">
+      <div class="col-md-12">
         <nb-card>
-          <nb-card-header>Means</nb-card-header>
+          <nb-card-header>Marks</nb-card-header>
           <nb-card-body>
-
-            <chartjs-line></chartjs-line>
+            <ngx-echarts-area-stack [dataset]="chartData" [labels]="chartLabel"></ngx-echarts-area-stack>
           </nb-card-body>
         </nb-card>
       </div>

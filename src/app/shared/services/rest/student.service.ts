@@ -5,6 +5,8 @@ import {AppstateService} from '../appstate.service';
 import {Observable} from 'rxjs';
 import {Student} from '../../models/student';
 import {Module} from '../../models/module';
+import {Exam} from '../../models/component';
+import {Mark} from '../../models/mark';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +69,18 @@ export class StudentService extends RestService {
     return new Observable<boolean>(observer => {
       this.del<any>('api/students/' + studentId, {}).subscribe(result => {
         observer.next(true);
+        observer.complete();
+      }, error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
+  public getMarkByStudent(studentId: number): Observable<Mark[]> {
+    return new Observable<Mark[]>(observer => {
+      this.get<any>('api/students/' + studentId + '/marks', {}).subscribe(result => {
+        observer.next(result as Array<Mark>);
         observer.complete();
       }, error => {
         observer.error(error);

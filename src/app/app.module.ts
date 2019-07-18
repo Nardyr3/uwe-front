@@ -43,6 +43,8 @@ import { ModuleComponent } from './components/module/module.component';
 import { ConfirmationModalComponent } from './components/modals/confirmation-modal/confirmation-modal.component';
 import {ChartjsLineComponent} from './components/home/line-chart-chartjs.component';
 import {ChartModule} from 'angular2-chartjs';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {EchartsAreaStackComponent} from './components/home/echarts-area-stack.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import {ChartModule} from 'angular2-chartjs';
     LineChartComponent,
     ChartjsLineComponent,
     ModuleComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    EchartsAreaStackComponent
   ],
   entryComponents: [
     ConfirmationModalComponent
@@ -93,7 +96,8 @@ import {ChartModule} from 'angular2-chartjs';
     NbDatepickerModule.forRoot(),
     NbAccordionModule,
     NbSpinnerModule,
-    ChartModule
+    ChartModule,
+    NgxChartsModule
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent]

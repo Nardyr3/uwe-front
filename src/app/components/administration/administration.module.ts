@@ -5,12 +5,12 @@ import { AdministrationRoutingModule } from './administration-routing.module';
 import {AdministrationStudentsComponent} from './administration-students/administration-students.component';
 import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {
-  NbAccordionModule,
+  NbAccordionModule, NbAlertModule,
   NbButtonModule,
   NbCardModule,
   NbContextMenuModule,
   NbDatepickerModule,
-  NbDialogModule,
+  NbDialogModule, NbIconModule,
   NbMenuModule, NbSelectModule, NbSidebarModule
 } from '@nebular/theme';
 import { AdministrationModulesComponent } from './administration-modules/administration-modules.component';
@@ -18,10 +18,12 @@ import { AdministrationStudentComponent } from './administration-students/admini
 import { AdministrationModuleComponent } from './administration-modules/administration-module/administration-module.component';
 import {CustomModuleButtonComponent} from './administration-modules/custom-module-button.component';
 import {CustomDatePickerComponent} from './administration-modules/custom-datepicker.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CustomStudentButtonComponent} from './administration-students/custom-student-button.component';
 import { AdministrationComponentComponent } from './administration-component/administration-component.component';
 import {CustomComponentButtonComponent} from './administration-modules/administration-module/custom-component-button.component';
+import {ButtonRenderComponent} from './administration-student/button-render/button-render.component';
+import {AddGradeDialogComponent} from './administration-student/add-grade-dialog/add-grade-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,15 @@ import {CustomComponentButtonComponent} from './administration-modules/administr
     CustomDatePickerComponent,
     CustomStudentButtonComponent,
     AdministrationComponentComponent,
-    CustomComponentButtonComponent
+    CustomComponentButtonComponent,
+    ButtonRenderComponent,
+    AddGradeDialogComponent,
   ],
   entryComponents: [
     CustomModuleButtonComponent,
     CustomDatePickerComponent,
     CustomStudentButtonComponent,
-    CustomComponentButtonComponent
+    CustomComponentButtonComponent,
     ButtonRenderComponent,
     AddGradeDialogComponent,
   ],
@@ -55,7 +59,10 @@ import {CustomComponentButtonComponent} from './administration-modules/administr
     NbDatepickerModule,
     NbAccordionModule,
     NbSidebarModule,
-    NbSelectModule
+    NbSelectModule,
+    NbIconModule,
+    ReactiveFormsModule,
+    NbAlertModule
   ]
 })
 export class AdministrationModule { }

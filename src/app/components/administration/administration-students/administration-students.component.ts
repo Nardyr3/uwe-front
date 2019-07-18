@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {StudentService} from '../../../shared/services/rest/student.service';
 import {Student} from '../../../shared/models/student';
 import {CustomStudentButtonComponent} from './custom-student-button.component';
 import {ConfirmationModalComponent} from '../../modals/confirmation-modal/confirmation-modal.component';
 import {NbDialogService} from '@nebular/theme';
+import {StudentService} from '../../../shared/services/rest/student.service';
 
 @Component({
   selector: 'app-administration-students',
@@ -47,7 +47,7 @@ export class AdministrationStudentsComponent implements OnInit {
         type: 'string',
       },
       customAction: {
-        title: 'View the module',
+        title: 'View the student',
         type: 'custom',
         renderComponent: CustomStudentButtonComponent,
         addable: false,
