@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
 import {Module} from '../../../../shared/models/module';
 import {Exam} from '../../../../shared/models/component';
 import {ComponentService} from '../../../../shared/services/rest/component.service';
+import {MarkService} from '../../../../shared/services/rest/mark.service';
+import {Mark} from '../../../../shared/models/mark';
 
 export function markValidator(control: FormControl) {
   const mark = control.value;
@@ -20,10 +22,12 @@ export function markValidator(control: FormControl) {
   styleUrls: ['./add-grade-dialog.component.scss']
 })
 export class AddGradeDialogComponent implements OnInit {
-  @Input() title: string;
+  @Input() title: any;
   @ViewChildren(NbPopoverDirective) popovers: QueryList<NbPopoverDirective>;
   private modules: Array<Module>;
   private components: Array<Exam>;
+  private data: Mark;
+  selectedModule: Module;
 
   /**
    * Form soumis ?
@@ -39,7 +43,7 @@ export class AddGradeDialogComponent implements OnInit {
    * Connexion en cours
    */
   public loading: boolean;
-  constructor(private moduleService: ModuleService, private componentService: ComponentService,
+  constructor(private moduleService: ModuleService, private componentService: ComponentService, private markService: MarkService,
               protected ref: NbDialogRef<AddGradeDialogComponent>, private formBuilder: FormBuilder, protected appState: AppstateService) {
   }
 
@@ -86,6 +90,16 @@ export class AddGradeDialogComponent implements OnInit {
       }
       return;
     }
+    this.data = {
+      value: this.loginForm.controls.mark.value,
+      student: this.title.id,
+      component: this.loginForm.controls.component.value
+    };
+    console.log(this.data);
+    this.markService.createMark(this.data).subscribe(res => {
+      console.log(res);
+      console.log('created');
+    });
     this.loading = true;
     this.ref.close();
   }
@@ -103,5 +117,13 @@ export class AddGradeDialogComponent implements OnInit {
     if (this.popovers.toArray()[popover]) {
       this.popovers.toArray()[popover].hide();
     }
+  }
+
+  updateComponent(e) {
+    console.log(e);
+    this.moduleService.getModuleById(Number(e)).subscribe(resolve => {
+      console.log(resolve);
+      this.components = resolve.components;
+    });
   }
 }

@@ -5,7 +5,7 @@
             <form [formGroup]="loginForm">
                 <div class="form-group ">
                    <h6>Name</h6>
-                    <input type="text" class="form-control" id="name" value="{{ title.prenom + ' ' + title.nom }}" disabled nbInput fullWidth fieldSize="large" required>
+                    <input type="text" class="form-control" id="name" value="{{ title.first_name + ' ' + title.last_name }}" disabled nbInput fullWidth fieldSize="large" required>
 
                 </div>
                 <div class="form-group input ">
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <h6>Module</h6>
 
-                    <nb-select placeholder="Select Module" formControlName="module"
+                    <nb-select placeholder="Select Module" formControlName="module" (ngModelChange)="updateComponent($event)"
                                nbPopover="Modules can't be empty" nbPopoverTrigger="noop" (click)="close(1)" nbPopoverPlacement="right">
                         <nb-option *ngFor="let module of modules" [value]="module.id">{{ module.name }}</nb-option>
                     </nb-select>
